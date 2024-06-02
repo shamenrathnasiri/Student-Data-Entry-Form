@@ -1,5 +1,7 @@
 
 import tkinter as tk
+from tkinter import ttk
+
 
 root =tk.Tk()
 root.title("Student data entry form - University of SYYZ")
@@ -37,5 +39,18 @@ genderEntry1.place(x=200,y=300)
 genderEntry2.place(x=300,y=300)
 mobileEntry.place(x=200,y=350)
 emailEntry.place(x=200,y=400)
+
+def register():
+    tk.Label(text="registration Sucsess",fg='green',font=('calibri',11), ).place(x=250,y=430)
+
+#submit and clear button
+
+button1 =ttk.Button(root,text='Submit',command=register) #submit button
+button1.pack()
+button1.place(x=270,y=500)
+
+button2=ttk.Button(root,text=' X Clear') #clear button
+button2.pack()
+button2.place(x=470,y=500)
 
 root.mainloop()
