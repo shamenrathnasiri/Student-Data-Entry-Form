@@ -8,6 +8,7 @@ root =tk.Tk()
 root.title("Student data entry form - University of SYYZ")
 root.geometry('800x600')
 root.resizable(False,False)
+root.configure(bg='sky blue')
 
 #add database
 def regdata():
@@ -20,7 +21,7 @@ def regdata():
     
     mycursor = mydb.cursor()
 
-    name = nameEntry.get()
+    name = nameEntry.get() #get the inputs for database
     adress = adressEntry.get()
     age = ageEntry.get()
     gender = genderEntry.get()
@@ -31,7 +32,14 @@ def regdata():
     mydb.commit()
     msg.showinfo("registration","registeres successfully")
 
-def clear(): #clear 
+    nameEntry.delete(0,tk.END)  #clear all input details after click the reg button
+    adressEntry.delete(0,tk.END)
+    ageEntry.delete(0,tk.END)
+    genderEntry.delete(0,tk.END)
+    mobileEntry.delete(0,tk.END)
+    emailEntry.delete(0,tk.END)
+
+def clear(): #clear all the input when click clear button
     nameEntry.delete(0,tk.END)
     adressEntry.delete(0,tk.END)
     ageEntry.delete(0,tk.END)
@@ -39,13 +47,13 @@ def clear(): #clear
     mobileEntry.delete(0,tk.END)
     emailEntry.delete(0,tk.END)
 
-tk.Label(root,text="Student Registration Form", font="arial 25").pack(pady=50)
-tk.Label(text="Name", font =23).place(x=100,y=150)
-tk.Label(text="Adress", font =23).place(x=100,y=200)
-tk.Label(text="Age", font =23).place(x=100,y=250)
-tk.Label(text="Gender", font =23).place(x=100,y=300)
-tk.Label(text="Mobile No", font =23).place(x=100,y=350)
-tk.Label(text="Email", font =23).place(x=100,y=400)
+tk.Label(root,text="Student Registration Form", font="arial 25", bg="sky blue").pack(pady=50)
+tk.Label(text="Name", font =23,bg="sky blue").place(x=100,y=150)
+tk.Label(text="Adress", font =23,bg="sky blue").place(x=100,y=200)
+tk.Label(text="Age", font =23,bg="sky blue").place(x=100,y=250)
+tk.Label(text="Gender", font =23,bg="sky blue").place(x=100,y=300)
+tk.Label(text="Mobile No", font =23,bg="sky blue").place(x=100,y=350)
+tk.Label(text="Email", font =23,bg="sky blue").place(x=100,y=400)
 
 #data entry variable
 nameValue= tk.StringVar()
@@ -55,7 +63,8 @@ genderValue=tk.StringVar()
 mobileValue= tk.StringVar()
 emailValue= tk.StringVar()
 
-nameEntry=tk.Entry(root,textvariable=nameValue,width=30,bd=2,font=20)
+# data entry field
+nameEntry=tk.Entry(root,textvariable=nameValue,width=30,bd=2,font=20) 
 adressEntry=tk.Entry(root,textvariable=adressValue,width=30,bd=2,font=20)
 ageEntry=tk.Entry(root,textvariable=ageValue,width=30,bd=2,font=20)
 genderEntry=tk.Entry(root,textvariable=genderValue,width=30,bd=2,font=20)
@@ -70,8 +79,8 @@ mobileEntry.place(x=200,y=350)
 emailEntry.place(x=200,y=400)
 
 #submit and clear button
-
-button1 =ttk.Button(root,text='Submit', command= regdata ) #submit button
+button1 =ttk.Button(command= clear)
+button1 =ttk.Button(root,text='Submit', command= regdata  ) #submit button
 button1.pack()
 button1.place(x=270,y=500)
 
